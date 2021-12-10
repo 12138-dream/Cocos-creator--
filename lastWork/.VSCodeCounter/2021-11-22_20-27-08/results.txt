@@ -1,0 +1,42 @@
+Date : 2021-11-22 20:27:08
+Directory : d:\MyDrivers\lastWork
+Total : 13 files,  5759 codes, 19962 comments, 189 blanks, all 25910 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| TypeScript |          1 |      4,687 |     19,745 |        133 |     24,565 |
+| JSON       |          4 |        769 |          0 |          1 |        770 |
+| JavaScript |          8 |        303 |        217 |         55 |        575 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                 | files      | code       | comment    | blank      | total      |
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                    |         13 |      5,759 |     19,962 |        189 |     25,910 |
+| assets                                               |          8 |        303 |        217 |         55 |        575 |
+| assets\Scripts                                       |          8 |        303 |        217 |         55 |        575 |
+| settings                                             |          2 |        750 |          0 |          1 |        751 |
++------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                             | language   | code       | comment    | blank      | total      |
++------------------------------------------------------+------------+------------+------------+------------+------------+
+| d:\MyDrivers\lastWork\assets\Scripts\bulletAttack.js | JavaScript |         26 |          8 |          1 |         35 |
+| d:\MyDrivers\lastWork\assets\Scripts\bulletMove.js   | JavaScript |         10 |          0 |          1 |         11 |
+| d:\MyDrivers\lastWork\assets\Scripts\enemyMove.js    | JavaScript |         11 |          0 |          3 |         14 |
+| d:\MyDrivers\lastWork\assets\Scripts\game.js         | JavaScript |        142 |        103 |          8 |        253 |
+| d:\MyDrivers\lastWork\assets\Scripts\joystick.js     | JavaScript |         44 |         21 |          7 |         72 |
+| d:\MyDrivers\lastWork\assets\Scripts\playerAttack.js | JavaScript |         27 |         34 |         13 |         74 |
+| d:\MyDrivers\lastWork\assets\Scripts\playermove.js   | JavaScript |         18 |         17 |          9 |         44 |
+| d:\MyDrivers\lastWork\assets\Scripts\wallAttack.js   | JavaScript |         25 |         34 |         13 |         72 |
+| d:\MyDrivers\lastWork\creator.d.ts                   | TypeScript |      4,687 |     19,745 |        133 |     24,565 |
+| d:\MyDrivers\lastWork\jsconfig.json                  | JSON       |         15 |          0 |          0 |         15 |
+| d:\MyDrivers\lastWork\project.json                   | JSON       |          4 |          0 |          0 |          4 |
+| d:\MyDrivers\lastWork\settings\project.json          | JSON       |         64 |          0 |          0 |         64 |
+| d:\MyDrivers\lastWork\settings\services.json         | JSON       |        686 |          0 |          1 |        687 |
+| Total                                                |            |      5,759 |     19,962 |        189 |     25,910 |
++------------------------------------------------------+------------+------------+------------+------------+------------+

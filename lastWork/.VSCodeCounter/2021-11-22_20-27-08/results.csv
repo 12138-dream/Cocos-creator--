@@ -1,0 +1,15 @@
+"filename", "language", "JSON", "JavaScript", "TypeScript", "comment", "blank", "total"
+"d:\MyDrivers\lastWork\assets\Scripts\bulletAttack.js", "JavaScript", 0, 26, 0, 8, 1, 35
+"d:\MyDrivers\lastWork\assets\Scripts\bulletMove.js", "JavaScript", 0, 10, 0, 0, 1, 11
+"d:\MyDrivers\lastWork\assets\Scripts\enemyMove.js", "JavaScript", 0, 11, 0, 0, 3, 14
+"d:\MyDrivers\lastWork\assets\Scripts\game.js", "JavaScript", 0, 142, 0, 103, 8, 253
+"d:\MyDrivers\lastWork\assets\Scripts\joystick.js", "JavaScript", 0, 44, 0, 21, 7, 72
+"d:\MyDrivers\lastWork\assets\Scripts\playerAttack.js", "JavaScript", 0, 27, 0, 34, 13, 74
+"d:\MyDrivers\lastWork\assets\Scripts\playermove.js", "JavaScript", 0, 18, 0, 17, 9, 44
+"d:\MyDrivers\lastWork\assets\Scripts\wallAttack.js", "JavaScript", 0, 25, 0, 34, 13, 72
+"d:\MyDrivers\lastWork\creator.d.ts", "TypeScript", 0, 0, 4687, 19745, 133, 24565
+"d:\MyDrivers\lastWork\jsconfig.json", "JSON", 15, 0, 0, 0, 0, 15
+"d:\MyDrivers\lastWork\project.json", "JSON", 4, 0, 0, 0, 0, 4
+"d:\MyDrivers\lastWork\settings\project.json", "JSON", 64, 0, 0, 0, 0, 64
+"d:\MyDrivers\lastWork\settings\services.json", "JSON", 686, 0, 0, 0, 1, 687
+"Total", "-", 769, 303, 4687, 19962, 189, 25910

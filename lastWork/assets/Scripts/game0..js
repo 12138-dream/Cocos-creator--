@@ -1,0 +1,234 @@
+cc.Class({
+    extends: cc.Component,
+//主要操作是node.active，在按钮逻辑中的实现
+//以及游戏元素在界面变化中位置的变化
+    properties: {
+        bg1:{
+            type:cc.Node,
+            default:null,
+        },
+        bg2:{
+            type:cc.Node,
+            default:null,
+        },
+        flagBegin:false,
+        gameStart:{
+            type:cc.Node,
+            default:null,
+        },
+        gamePlaying:{
+            type:cc.Node,
+            default:null,
+        },
+        gamePause:{
+            type:cc.Node,
+            default:null,
+        },
+        player:{
+            type:cc.Node,
+            default:null,
+        },
+        joystick:{
+            type:cc.Node,
+            default:null,
+        },
+        attackstick:{
+            type:cc.Node,
+            default:null,
+        },
+        bullet:{
+            type:cc.Prefab,
+            default:null,
+        },
+        enemy:{
+            type:cc.Prefab,
+            default:null,
+        },
+        scoreLabel:{
+            type:cc.Label,
+            default:null,
+        },
+        gameLoad:{
+            type:cc.Node,
+            default:null,
+        },
+        backHome:{
+            type:cc.Node,
+            default:null,
+        },
+        gameClear:{
+            type:cc.Node,
+            default:null,
+        },
+        gameOver:{
+            type:cc.Node,
+            default:null,
+        },
+        bgMuisc:{
+            type:cc.AudioSource,
+            default:null,
+        },
+        zidan:{
+            type:cc.AudioSource,
+            default:null,
+        },
+        boom:{
+            type:cc.AudioSource,
+            default:null,
+        },
+        score:0,
+    },
+    onLoad () {
+        var manager = cc.director.getCollisionManager();//获取碰撞检测系统
+        manager.enabled = true;//开启碰撞检测系统
+        this.gameStart.active=true;
+        this.gamePause.active = false;
+        this.gamePlaying.active=false
+        this.player.active=true;
+        this.joystick.active=true;
+        this.attackstick.active=false;
+        this.bullet.active=false;
+        this.score=0;
+        this.gameClear.active=false;
+        this.gameOver.active=false
+    },
+
+    start () {
+
+    },
+
+    bgMove(){
+        this.bg1.y-=2;
+        this.bg2.y-=2;
+        if(this.bg1.y<=-this.bg1.height){
+            this.bg1.y=this.bg2.y+this.bg2.height
+        }
+        if(this.bg2.y<=-this.bg1.height){
+            this.bg2.y=this.bg1.y+this.bg2.height
+        }
+    },
+    update (dt) {
+        if(this.flagBegin){
+            this.bgMove()
+        }
+    },
+
+    clickBtn (sender,str) {//****按钮函数*****
+        if(str=="start"){
+            cc.log('游戏开始')
+            this.flagBegin=true;
+            this.gameStart.active=false;
+            this.gamePlaying.active=true;
+            this.player.active=true;
+            this.joystick.active=true;
+            this.attackstick.active=true;
+            this.createEnemyflag=true;
+            this.createEnemy()
+            this.createLotEnemy();
+            this.gameClear.active=false
+            this.gameOver.active=false;
+            this.bgMuisc.play();
+        }
+        if(str=="pause"){
+            cc.log('点击暂停')
+            this.flagBegin=false;
+            this.gamePlaying.active=false;
+            this.gamePause.active=true;
+            this.player.active=false;
+            this.joystick.active=false;
+            this.attackstick.active=false;
+            this.createEnemyflag=false;
+            this.gameLoad.active=true;
+            this.backHome.active=false;
+            this.gameClear.active=false
+            this.gameOver.active=false
+            cc.director.pause();
+        }
+        if(str=="continue"){
+            cc.log('游戏继续')
+            cc.director.resume()
+            this.gamePlaying.active=true;
+            this.gamePause.active=false;
+            this.flagBegin=true;
+            this.player.active=true;
+            this.joystick.active=true;
+            this.attackstick.active=true;
+            this.gameClear.active=false
+            this.gameOver.active=false
+        }
+        if(str=="restart"){
+            cc.log('重新开始')
+            cc.director.resume()
+            this.gameStart.active=false;
+            this.gamePause.active = false;
+            this.gamePlaying.active=true
+            this.flagBegin=true;            
+            this.player.active=true;
+            this.player.x=0;
+            this.player.y=0;
+            this.joystick.active=true;
+            this.bg1.y=0;
+            this.bg2.y=this.bg1.y+this.bg1.height
+            this.attackstick.active=true;
+            this.score=0;
+            this.scoreLabel.string='得分:'+this.score;
+            this.gameClear.active=false
+            this.gameOver.active=false
+            //根据beMove函数来看，两者的相对位置是互相影响的
+            //并且第一个if已经声明了bg1的y坐标随着bg2的y坐标而变化
+        }
+        if(str=="backHome"){
+            cc.log('返回游戏最初界面')
+            this.gameStart.active=true;
+            this.gamePause.active = false;
+            this.gamePlaying.active=fasle;
+            this.bg1.y=0;
+            this.bg2.y=this.bg1.y+this.bg1.height
+            this.player.active=false;
+            this.player.x=0;
+            this.player.y=0;
+            this.score=0;
+            this.scoreLabel.string='得分:'+this.score;
+        }
+        if(str=="attack"){//双等于号，要不然相当于所有按钮点击都有效，没有特征
+            cc.log("attack");
+            this.createBullet();
+            this.zidan.play();
+            /*
+            this.bullet.x=this.player.x;
+            this.bullet.y=this.player.y;
+            this.bullet.active=true
+            */
+        }
+    },
+
+        createBullet(){//生成子弹
+            var a=cc.instantiate(this.bullet)
+            this.node.addChild(a,1,"newbullet")
+            a.x=this.player.x-10;
+            a.y=this.player.y-250;
+        },
+        createEnemy(){//生成敌机
+            cc.log('生成敌机')
+            var a=cc.instantiate(this.enemy)
+            this.node.addChild(a,1,"newenemy")
+            a.x=this.node.x-450-450+Math.random()*900;
+            a.y=this.node.y-812+Math.random()*812;//注意this.node.x是canvas右上角的坐标
+        },
+        createLotEnemy(){
+            this.schedule(function(){
+                this.createEnemy();
+            },1);
+            cc.log("create")
+        },
+        gainScore(){
+            this.score+=1;
+            this.scoreLabel.string='得分:'+this.score;
+        },
+        createPlayer(){
+            var a=cc.instantiate(this.player);
+            this.node.addChild(a);
+            a.x=this.player.x;
+            a.y=this.player.y;
+        },
+})
